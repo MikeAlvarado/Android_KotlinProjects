@@ -16,6 +16,9 @@ interface MascotaDBDao{
     @Query("SELECT * FROM MascotaDB WHERE Raza = :raza")
     fun loadByRaza(raza: String): List<Mascota>
 
+    @Query("DELETE FROM MascotaDB WHERE Nombre = :nombre")
+    fun deleteOneDog(nombre: String)
+
     @Insert
     fun insertMascota(mascota:MascotaDB)
 

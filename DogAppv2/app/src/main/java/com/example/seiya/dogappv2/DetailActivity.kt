@@ -79,10 +79,12 @@ class DetailActivity : AppCompatActivity() {
 
                 val instanceDatabase = MascotasDBDatabase.getInstance(this) // Context: Main Activity
 
+                mascotaa.Favorito = !(mascotaa!!.Favorito)
+
+
                 ioThread {
-                    instanceDatabase.MascotaDBDao().deleteMascota(mascotaa)
-                    //mascotaa?.Favorito = !mascota!!.Favorito
-                    //instanceDatabase.MascotaDBDao().insertMascota(mascotaa)
+                    instanceDatabase.MascotaDBDao().deleteOneDog(mascotaa.Nombre)
+                    instanceDatabase.MascotaDBDao().insertMascota(mascotaa)
                 }
             }
 
@@ -205,8 +207,8 @@ class DetailActivity : AppCompatActivity() {
                 tv_detail_Nombre.text.toString(),
                 tv_detail_Raza.text.toString(),
                 "$fDia/$fsMes/$fAno",
-                tv_detail_Correo.toString(),
                 tv_detail_Correo.text.toString(),
+                tv_detail_Lugar.text.toString(),
                 tv_detail_Telefono.text.toString(),
                 0,
                 false,
@@ -221,4 +223,16 @@ class DetailActivity : AppCompatActivity() {
 
 
     }
+
+    /*
+    override fun onBackPressed() {
+
+        Toast.makeText(this, "Dog not saved", Toast.LENGTH_LONG)
+
+
+        super.onBackPressed()
+
+
+    }
+    */
 }
